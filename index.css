@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-bg: #050505;
+  --color-accent: #4fd1c5;
+  --color-accent-purple: #d53f8c;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0aec0;
+  --color-navy-light: #111111;
+  --color-navy-lightest: #222222;
+  --color-white: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text-primary font-sans selection:bg-accent/30 selection:text-accent antialiased overflow-x-hidden;
+  }
+}
+
+.hero-title {
+  @apply text-4xl sm:text-5xl md:text-8xl font-black tracking-[0.1em] md:tracking-widest text-white uppercase text-center;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-subtitle {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl uppercase leading-relaxed mt-8 text-center max-w-2xl mx-auto px-2;
+}
+
+.logo-text {
+  @apply text-2xl font-bold tracking-tighter text-accent;
+}
+
+.logo-cursor {
+  @apply text-accent-purple inline-block animate-pulse;
+}
+
+.featured-label {
+  @apply text-[10px] font-bold tracking-[0.3em] text-text-secondary uppercase mb-4;
+}
+
+.scroll-indicator {
+  @apply w-8 h-12 border-2 border-white/30 rounded-full flex flex-col items-center p-2;
+}
+
+.scroll-dot {
+  @apply w-1 h-2 bg-accent-purple rounded-full animate-bounce;
+}
+
+.nav-link {
+  @apply text-text-primary hover:text-accent transition-colors duration-300 font-mono text-sm lowercase tracking-widest;
+}
+
+.section-title {
+  @apply text-2xl md:text-3xl font-bold mb-10 flex items-center gap-4 text-white;
+}
+
+.section-title::before {
+  content: "0" counter(section) ".";
+  counter-increment: section;
+  @apply text-accent font-mono text-xl font-normal;
+}
+
+.section-title::after {
+  content: "";
+  @apply h-[1px] bg-navy-lightest flex-grow max-w-[300px];
+}
+
+section {
+  counter-reset: section;
+}
+
+.project-card {
+  @apply relative overflow-hidden rounded bg-navy-light transition-all duration-300 shadow-lg;
+}
+
+.glass {
+  @apply bg-navy-light/50 backdrop-blur-md border border-white/5;
+}
+
+.glow {
+  @apply shadow-[0_0_20px_rgba(79,209,197,0.1)];
+}
+
+.tag {
+  @apply px-2 py-1 text-[10px] font-mono text-accent rounded uppercase tracking-wider;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-lightest);
+  border: 3px solid var(--color-bg);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
